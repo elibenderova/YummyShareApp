@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+/***********************
+HEAD
+***********************/
+<head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <title>Yummy Share</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+/***********************
+NAV
+***********************/
+<nav th:fragment="nav" class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+                <th:block sec:authorize="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/about}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/users/register}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/users/login}">Login</a>
+                    </li>
+                </th:block>
+
+                <th:block sec:authorize="isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/articles/all}">Articles</a></li>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/articles/add}">Add Article</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/recipes/all}">Recipes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/recipes/add}">Add Recipe</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/users/profile}">My Profile</a>
+                    </li>
+
+                    <th:block sec:authorize="hasRole('ADMIN')">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/users/all}">Users</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/statistics}">Statistics</a>
+                        </li>
+                    </th:block>
+
+                    <li class="nav-item">
+                        <form th:action="@{/users/logout}" th:method="POST">
+                            <input class="btn btn-link nav-link" type="submit" value="Logout">
+                        </form>
+                    </li>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+/***********************
+FOOTER
+***********************/
+<footer th:fragment="footer" class="container text-white">
+    <p>&copy;Yummy Share 2021. All rights reserved.</p>
+</footer>
+</body>
+</html>

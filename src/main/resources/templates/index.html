@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::nav"></header>
+
+<div class="container-fluid">
+    <h3 class="text-center text-white mt-5" style="font-size:70px"><br>Welcome to Yummy Share,</br>
+        <span
+                sec:authorize="isAuthenticated()"
+                sec:authentication="name">
+            Name of the logged in user
+        </span>
+        <span sec:authorize="!isAuthenticated()">
+            anonymous
+        </span>
+    </h3>
+</div>
+</body>
+
+<footer th:replace="fragments/commons::footer"></footer>
+</html>
+

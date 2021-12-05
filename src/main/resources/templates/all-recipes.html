@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::nav"></header>
+
+<div class="container" style="max-width: 500px;">
+    <div class="card-group vgr-cards">
+        <div class="card" th:each="r : ${recipes}" th:object="${r}">
+            <div class="card-img-body">
+                <img th:src="*{pictureUrl}" class="card-img" alt="Card image cap">
+            </div>
+            <div class="card-body">
+                <h4 th:text="*{name}" class="card-title" style="color: #5a5a5a">Card title</h4>
+                <label style="color: #5a5a5a">Portions:</label>
+                <p th:text="*{portions}" class="card-text" style="color: #5a5a5a"></p>
+                <label style="color: #5a5a5a">Products:</label>
+                <p th:text="*{products}" style="color: #5a5a5a"></p>
+                <label style="color: #5a5a5a">Preparation:</label>
+                <p th:text="*{preparation}" style="color: #5a5a5a"></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<footer th:replace="fragments/commons::footer"></footer>
+</html>

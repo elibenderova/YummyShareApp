@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::nav"></header>
+
+<section class="vh-100 gradient-custom">
+    <div class="container py-1 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-6 text-center">Register</h3>
+                        <form th:action="@{/users/register}"
+                              th:method="POST"
+                              th:object="${userRegistrationBindingModel}">
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <div class="form-outline">
+                                        <input type="text" id="firstName" name="firstName" placeholder="First Name" th:field="*{firstName}" th:errorclass="is-invalid" class="form-control form-control-lg" />
+                                    </div>
+                                    <small th:if="${#fields.hasErrors('firstName')}" class="text-danger"
+                                           th:errors="*{firstName}"></small>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <div class="form-outline">
+                                        <input type="text" id="lastName" name="lastName" placeholder="Last Name" th:field="*{lastName}" th:errorclass="is-invalid" class="form-control form-control-lg" />
+                                    </div>
+                                    <small th:if="${#fields.hasErrors('lastName')}" class="text-danger"
+                                           th:errors="*{lastName}"></small>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-2">
+                                    <div class="form-outline">
+                                        <input type="text" id="username" name="username" placeholder="Username" th:field="*{username}" th:errorclass="is-invalid" class="form-control form-control-lg" />
+                                    </div>
+                                    <small th:if="${#fields.hasErrors('username')}" class="text-danger"
+                                           th:errors="*{username}"></small>
+                                </div>
+                                <div class="col-md-6 mb-2">
+
+                                    <div class="form-outline">
+                                        <input type="email" id="email" name="email" placeholder="Email" th:field="*{email}" th:errorclass="is-invalid" class="form-control form-control-lg" />
+                                    </div>
+                                    <small th:if="${#fields.hasErrors('email')}" class="text-danger"
+                                           th:errors="*{email}"></small>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-2 pb-2">
+                                    <div class="form-outline">
+                                        <input type="password" id="password" name="password" placeholder="Password" th:field="*{password}" th:errorclass="is-invalid" class="form-control form-control-lg" />
+                                    </div>
+                                    <small th:if="${#fields.hasErrors('password')}" class="text-danger"
+                                           th:errors="*{password}"></small>
+                                </div>
+                                <div class="col-md-6 mb-2 pb-2">
+                                    <div class="form-outline">
+                                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" th:field="*{confirmPassword}" th:errorclass="is-invalid" class="form-control form-control-lg" />
+                                    </div>
+                                    <small th:if="${#fields.hasErrors('confirmPassword')}" class="text-danger"
+                                           th:errors="*{confirmPassword}"></small>
+                                </div>
+                            </div>
+
+                            <div class="mt-0 pt-0 text-center">
+                                <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                            </div>
+
+                            <p class="text-center text-muted mt-2 mb-0">Have already an account? <a th:href="@{/users/login}" class="fw-bold text-body"><u>Login here</u></a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+
+<footer th:replace="fragments/commons::footer"></footer>
+</html>

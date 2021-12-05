@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::nav"></header>
+
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+            <div class="col-xl-4 col-md-22">
+                <div class="card user-card-full">
+                    <div class="row m-l-0 m-r-0" th:object="${user}">
+                        <div class="col-sm-4 bg-c-lite-green user-profile">
+                            <div class="card-block text-center text-white">
+                                <div class="m-b-25"> <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image"> </div>
+                                <h6 class="f-w-600" th:text="*{username}">Username</h6>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="card-block">
+                                <h6 class="m-b-20 p-b-5 b-b-default f-w-600" style="color: #cc6041">Information</h6>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600" style="color: #cc6041">First Name</p>
+                                        <h6 class="text-muted f-w-400" th:text="*{firstName}"></h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600" style="color: #cc6041">Last Name</p>
+                                        <h6 class="text-muted f-w-400" th:text="*{lastName}"></h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600" style="color: #cc6041">Email</p>
+                                        <h6 class="text-muted f-w-400" th:text="*{email}"></h6>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p class="m-b-10 f-w-600" style="color: #cc6041">Count Of Roles</p>
+                                        <h6 class="text-muted f-w-400" th:text="*{roles.size}"></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<footer th:replace="fragments/commons::footer"></footer>
+</html>

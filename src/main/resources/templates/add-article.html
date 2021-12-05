@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/commons::head"></head>
+
+<body>
+<header th:replace="fragments/commons::nav"></header>
+
+<div style="width:500px; margin:0 auto;">
+    <h1>Add Article</h1>
+    <form
+            th:object="${articleAddBindingModel}"
+            th:action="@{/articles/add}"
+            th:method="post"
+            enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="mb-3">
+                <label>Title</label>
+                <input th:field="*{title}" type="text" class="form-control" placeholder="Title" id="title" style="width: 600px">
+                <small th:if="${#fields.hasErrors('title')}" class="text-danger"
+                       th:errors="*{title}"></small>
+            </div>
+
+            <div class="mb-3">
+                <label>Text</label>
+                <textarea th:field="*{text}" class="form-control" id="text" placeholder="Text" rows="10" style="width: 600px"></textarea>
+                <small th:if="${#fields.hasErrors('text')}" class="text-danger"
+                       th:errors="*{text}"></small>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+</body>
+
+<footer th:replace="fragments/commons::footer"></footer>
+</html>
